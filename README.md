@@ -41,7 +41,7 @@ This project is a machine learning application designed to automatically classif
 ### 1. Run the ETL Pipeline
 Cleans the data and stores it in an SQLite database.
 ```bash
-python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+python data/process_data.py data/messages.csv data/categories.csv data/DisasterResponse.db
 ```
 
 ### 2. Run the ML Pipeline
