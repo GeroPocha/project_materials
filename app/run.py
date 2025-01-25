@@ -12,8 +12,10 @@ from plotly.graph_objs import Bar, Pie
 import joblib
 from sqlalchemy import create_engine
 
-
 app = Flask(__name__)
+
+database_filepath = './data/disaster_response_db.db'
+# Couldnt get relative path to work
 
 def tokenize(text):
     tokens = word_tokenize(text)
@@ -26,12 +28,13 @@ def tokenize(text):
 
     return clean_tokens
 
+
 # Load data
-engine = create_engine('sqlite:///../data/DisasterResponse.db')
-df = pd.read_sql_table('DisasterResponse_table', engine)
+engine = create_engine('sqlite:///'+database_filepath)
+df = pd.read_sql_table('Messages', engine)
 
 # Load model
-model = joblib.load("../models/classifier.pkl")
+model = joblib.load("./models/classifier.pkl")
 
 
 # Index webpage displays visuals and receives user input text for the model
